@@ -9,4 +9,5 @@ import Foundation
 
 public class ProfileDependenciesImpl: ProfileDependencies {
     
+    public init() {}
 }

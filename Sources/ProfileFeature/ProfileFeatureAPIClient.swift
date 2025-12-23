@@ -9,4 +9,5 @@ import Foundation
 
 public class ProfileFeatureAPIClient: ProfilefeatureAPI {
     
+    public init() {}
 }
