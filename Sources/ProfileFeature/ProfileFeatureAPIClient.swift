@@ -6,8 +6,12 @@
 //
 
 import Foundation
+import PlatformKit
 
-public class ProfileFeatureAPIClient: ProfilefeatureAPI {
-    
+public class ProfileFeatureAPIClient: ProfileFeatureAPI {
     public init() {}
+
+    public func fetchFeeds() async throws -> any ProfileDTO {
+        return ProfileDTOImpl()
+    }
 }

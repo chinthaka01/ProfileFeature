@@ -3,22 +3,22 @@ import UIKit
 import PlatformKit
 import DesignSystem
 
-public struct ProfileFeatureEntry: MicroFeature {
-    public let id = "profile"
-    public let title = "Profile"
-    public let tabIcon: UIImage
+struct ProfileFeatureEntry: @MainActor MicroFeature {
+    let id = "profile"
+    let title = "Profile"
+    let tabIcon: UIImage
+    let selectedTabIcon: UIImage
 
     private let dependencies: ProfileDependencies
 
-    public init(
-        dependencies: ProfileDependencies,
-        tabIcon: UIImage = UIImage(systemName: "banknote")!
-    ) {
+    init(dependencies: ProfileDependencies) {
         self.dependencies = dependencies
-        self.tabIcon = tabIcon
+        self.tabIcon = UIImage(systemName: "person")!
+        self.selectedTabIcon = UIImage(systemName: "person")!
     }
 
-    public func makeRootView() -> AnyView {
+    @MainActor
+    func makeRootView() -> AnyView {
         let viewModel = ProfileViewModel(
             api: dependencies.profileAPI,
             analytics: dependencies.analytics

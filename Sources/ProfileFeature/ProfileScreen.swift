@@ -12,7 +12,7 @@ struct ProfileScreen: View {
     @ObservedObject var viewModel: ProfileViewModel
 
     var body: some View {
-        Label("test")
+        Text("test")
         .navigationTitle("Profile")
         .onAppear {
             viewModel.loadProfile()

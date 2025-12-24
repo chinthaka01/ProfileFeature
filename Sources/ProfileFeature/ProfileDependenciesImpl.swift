@@ -6,8 +6,15 @@
 //
 
 import Foundation
+import PlatformKit
 
 public class ProfileDependenciesImpl: ProfileDependencies {
+    public let profileAPI: any ProfileFeatureAPI
+    public let analytics: any Analytics
     
-    public init() {}
+    
+    public init(profileAPI: ProfileFeatureAPI, analytics: Analytics) {
+        self.profileAPI = profileAPI
+        self.analytics = analytics
+    }
 }

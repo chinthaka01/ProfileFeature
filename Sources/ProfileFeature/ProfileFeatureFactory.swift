@@ -8,10 +8,15 @@
 import Foundation
 import PlatformKit
 
-struct ProfileFeatureFactory: FeatureFactory {
-    let dependencies: ProfileDependencies
+public struct ProfileFeatureFactory: @MainActor FeatureFactory {
+    public let dependencies: ProfileDependencies
+    
+    public init(dependencies: ProfileDependencies) {
+        self.dependencies = dependencies
+    }
 
-    func makeFeature() -> MicroFeature {
+    @MainActor
+    public func makeFeature() -> MicroFeature {
         ProfileFeatureEntry(dependencies: dependencies)
     }
 }

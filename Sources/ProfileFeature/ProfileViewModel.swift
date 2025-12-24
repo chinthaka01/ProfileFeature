@@ -6,8 +6,19 @@
 //
 
 import Foundation
+import PlatformKit
 
-class ProfileViewModel {
+@MainActor
+final class ProfileViewModel: ObservableObject {
+    let api: any ProfileFeatureAPI
+    let analytics: any Analytics
     
-    public init() {}
+    @Published var profileDTO: ProfileDTOImpl?
+
+    init(api: ProfileFeatureAPI, analytics: Analytics) {
+        self.api = api
+        self.analytics = analytics
+    }
+    
+    func loadProfile() {}
 }
