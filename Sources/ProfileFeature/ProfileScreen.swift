@@ -15,7 +15,9 @@ struct ProfileScreen: View {
         Text("test")
         .navigationTitle("Profile")
         .onAppear {
-            viewModel.loadProfile()
+            Task {
+                await viewModel.loadProfile()
+            }
         }
     }
 }
