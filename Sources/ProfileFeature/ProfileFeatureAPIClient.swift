@@ -9,20 +9,16 @@ import Foundation
 import PlatformKit
 
 public final class ProfileFeatureAPIClient: ProfileFeatureAPI {
-    
-    private let bffBase = "https://jsonplaceholder.typicode.com"
-
     public let networking: any Networking
+    private let bffPath = "users"
 
     public init(networking: Networking) {
         self.networking = networking
     }
 
-    public func fetchProfile() async throws -> User? {
-        let url = "\(bffBase)/users/1"
-
+    public func fetchProfile() async throws -> User {
         let user = try await networking.fetchSingle(
-            url: url,
+            bffPath: "\(bffPath)/1",
             type: User.self
         )
         

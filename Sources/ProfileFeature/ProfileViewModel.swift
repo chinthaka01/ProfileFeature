@@ -14,6 +14,8 @@ final class ProfileViewModel: ObservableObject {
     let analytics: any Analytics
     
     @Published var profile: User?
+    @Published var isLoading = true
+    @Published var error: Error? = nil
 
     init(api: ProfileFeatureAPI, analytics: Analytics) {
         self.api = api
@@ -21,10 +23,17 @@ final class ProfileViewModel: ObservableObject {
     }
     
     func loadProfile() async {
+        profile = nil
+        error = nil
+        isLoading = true
+
         do {
             profile = try await api.fetchProfile()
         } catch {
             print("Failed to load profile: \(error)")
+            self.error = error
         }
+        
+        isLoading = false
     }
 }
