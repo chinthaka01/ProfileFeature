@@ -10,19 +10,22 @@ struct ProfileFeatureEntry: @MainActor MicroFeature {
     let selectedTabIcon: UIImage
 
     private let dependencies: ProfileDependencies
+    private let viewModel: ProfileViewModel
 
+    @MainActor
     init(dependencies: ProfileDependencies) {
         self.dependencies = dependencies
         self.tabIcon = UIImage(systemName: "person")!
         self.selectedTabIcon = UIImage(systemName: "person")!
+        
+        self.viewModel = ProfileViewModel(
+            api: dependencies.profileAPI,
+            analytics: dependencies.analytics
+        )
     }
 
     @MainActor
     func makeRootView() -> AnyView {
-        let viewModel = ProfileViewModel(
-            api: dependencies.profileAPI,
-            analytics: dependencies.analytics
-        )
         return AnyView(ProfileRootView(viewModel: viewModel))
     }
 }

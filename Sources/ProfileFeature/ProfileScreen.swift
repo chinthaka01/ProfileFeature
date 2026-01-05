@@ -24,7 +24,7 @@ struct ProfileScreen: View {
             } else {
                 ScrollView {
                     VStack(spacing: 0) {
-                        Header(user: viewModel.profile)
+                        Header(user: viewModel.profile, selfPostsCount: viewModel.selfPostsCount, loadedFromCache: viewModel.loadedFromCache)
                         Content(user: viewModel.profile)
                     }
                 }
@@ -44,9 +44,13 @@ struct ProfileScreen: View {
 
 struct Header: View {
     let user: User?
+    let selfPostsCount: Int?
+    let loadedFromCache: Bool
 
     var body: some View {
         ZStack {
+            Spacer(minLength: DSSpacing.md)
+
             LinearGradient(
                 colors: [
                     DSColor.primary.opacity(0.8),
@@ -55,7 +59,7 @@ struct Header: View {
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
-            .frame(height: 220)
+            .frame(height: 240)
             .clipShape(
                 RoundedCorner(
                     radius: 32,
@@ -70,15 +74,26 @@ struct Header: View {
 
                 Text(user?.name ?? "")
                     .font(DSTextStyle.title)
-                    .foregroundColor(.white)
+                    .foregroundColor(DSColor.headerText)
 
                 Text("@\(user?.username ?? "")")
                     .font(DSTextStyle.body)
-                    .foregroundColor(.white.opacity(0.85))
+                    .foregroundColor(DSColor.headerText.opacity(0.85))
+                
+                Text("Posts: \(selfPostsCount.map(String.init) ?? "N/A")")
+                    .font(DSTextStyle.caption)
+                    .foregroundColor(DSColor.headerText.opacity(0.85))
+                
+                if loadedFromCache {
+                    Text("Data served from cache")
+                        .font(DSTextStyle.body)
+                        .foregroundColor(DSColor.warningText.opacity(0.9))
+                }
 
                 Spacer(minLength: DSSpacing.md)
             }
         }
+        .padding(.horizontal, DSSpacing.md)
     }
 }
 
