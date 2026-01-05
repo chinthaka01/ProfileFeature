@@ -31,7 +31,18 @@ final class ProfileViewModel: ObservableObject {
             profile = try await api.fetchProfile()
         } catch {
             print("Failed to load profile: \(error)")
-            self.error = error
+            
+            let nsError = error as NSError
+            if nsError.domain == NSURLErrorDomain && nsError.code == NSURLErrorNotConnectedToInternet {
+                if let cached = try? ProfileCache.load() {
+                    print("Loading the profile from cache.")
+                    self.profile = cached
+                } else {
+                    self.error = error
+                }
+            } else {
+                self.error = error
+            }
         }
         
         isLoading = false

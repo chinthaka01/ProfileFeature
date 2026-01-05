@@ -22,6 +22,10 @@ public final class ProfileFeatureAPIClient: ProfileFeatureAPI {
             type: User.self
         )
         
+        Task {
+            try ProfileCache.save(user)
+        }
+        
         return user
     }
 }
