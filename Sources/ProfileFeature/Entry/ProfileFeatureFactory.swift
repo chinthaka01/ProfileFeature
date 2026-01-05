@@ -8,6 +8,11 @@
 import Foundation
 import PlatformKit
 
+/// Factory that creates the Profile micro feature.
+///
+/// The shell app owns an instance of this type and calls `makeFeature()`
+/// to obtain the tab descriptor and root view for the Profile module.
+@MainActor
 public struct ProfileFeatureFactory: @MainActor FeatureFactory {
     public let dependencies: ProfileDependencies
     

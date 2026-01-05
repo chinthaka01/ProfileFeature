@@ -3,6 +3,10 @@ import UIKit
 import PlatformKit
 import DesignSystem
 
+/// Micro frontend entry point for the Profile tab.
+///
+/// Exposes the tab metadata and builds the root SwiftUI view using the injected dependencies.
+@MainActor
 struct ProfileFeatureEntry: @MainActor MicroFeature {
     let id = "profile"
     let title = "Profile"

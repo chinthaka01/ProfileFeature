@@ -24,7 +24,9 @@ struct ProfileScreen: View {
             } else {
                 ScrollView {
                     VStack(spacing: 0) {
-                        Header(user: viewModel.profile, selfPostsCount: viewModel.selfPostsCount, loadedFromCache: viewModel.loadedFromCache)
+                        Header(user: viewModel.profile,
+                               selfPostsCount: viewModel.selfPostsCount,
+                               loadedFromCache: viewModel.loadedFromCache)
                         Content(user: viewModel.profile)
                     }
                 }
