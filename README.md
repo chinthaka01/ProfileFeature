@@ -159,3 +159,23 @@ TabView {
 ```
 
 This keeps the Profile feature fully modular: the package owns its screens, view model, API client, and cache, while the shell only provides networking and analytics through simple protocols.
+
+***
+
+## The Other Related Repositories
+
+### Shell App:
+Shell - https://github.com/chinthaka01/Wefriendz
+
+### Shared contracts:
+PlatformKit - https://github.com/chinthaka01/PlatformKit
+DesignSystem - https://github.com/chinthaka01/DesignSystem
+
+### Micro Frontends:
+Feed Feature - https://github.com/chinthaka01/FeedFeature
+Friends Feature - https://github.com/chinthaka01/FriendsFeature
+Profile Feature - https://github.com/chinthaka01/ProfileFeature
+
+### Isolate Feature Testing Apps:
+Feed Feature Testing App - https://github.com/chinthaka01/FeedFeatureApp
+Friends Feature Testing App - https://github.com/chinthaka01/FriendsFeatureApp
