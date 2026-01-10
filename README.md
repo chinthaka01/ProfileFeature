@@ -174,8 +174,8 @@ DesignSystem - https://github.com/chinthaka01/DesignSystem
 ### Micro Frontends:
 Feed Feature - https://github.com/chinthaka01/FeedFeature
 Friends Feature - https://github.com/chinthaka01/FriendsFeature
-Profile Feature - https://github.com/chinthaka01/ProfileFeature
 
 ### Isolate Feature Testing Apps:
 Feed Feature Testing App - https://github.com/chinthaka01/FeedFeatureApp
 Friends Feature Testing App - https://github.com/chinthaka01/FriendsFeatureApp
+Profile Feature Testing App - https://github.com/chinthaka01/ProfileFeatureApp
